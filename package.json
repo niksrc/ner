@@ -1,6 +1,6 @@
 {
   "name": "ner",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Client for STANFORD NER",
   "license": "MIT",
   "repository": "niksrc/ner",
@@ -16,7 +16,8 @@
     "test": "xo"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "ner-server.sh"
   ],
   "keywords": [
     "ner",
