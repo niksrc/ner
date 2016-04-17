@@ -1,13 +1,12 @@
-# ner [![Build Status](https://travis-ci.org/niksrc/ner.svg?branch=master)](https://travis-ci.org/niksrc/ner)
+# ner
 
-> Client for STANFORD NER
+> Client for Stanford NER
 
 ## Requirements
-	- Latest stable node & npm
-	- [STANFORD NER](http://nlp.stanford.edu/software/CRF-NER.shtml)
+[Stanford NER](http://nlp.Stanford.edu/software/CRF-NER.shtml)
 
-## Starting up STANFORD NER
-	- Use [ner-server.sh](ner-server.sh)
+## Starting up Stanford NER
+Use [ner-server.sh](ner-server.sh)
 
 ## Install
 
