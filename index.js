@@ -10,7 +10,7 @@ function get(opts, text, callback) {
 
 	socket.connect(opts.port, opts.host, function () {
 		socket.setNoDelay(true);
-		socket.write(text + '\n');
+		socket.write(text.replace(/\r?\n|\r|\t/g, ' ') + '\n');
 	});
 
 	socket.on('data', function (data) {
