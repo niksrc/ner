@@ -20,23 +20,19 @@ $ npm install --save ner
 ```js
 const ner = require('ner');
 
-ner.init({
+ner.get({
 	port:8080,
 	host:'localhost'
-});
-
-ner.get('Wikipedia is a free-access, free-content Internet encyclopedia, supported and hosted by the non-profit Wikimedia Foundation. Those who can access the site can edit most of its articles.[5] Wikipedia is ranked among the ten most popular websites,[4] and constitutes the Internets largest and most popular general', function(response){
-	console.log(response);
+}, 'Wikipedia is a free-access, free-content Internet encyclopedia, supported and hosted by the non-profit Wikimedia Foundation. Those who can access the site can edit most of its articles.[5] Wikipedia is ranked among the ten most popular websites,[4] and constitutes the Internets largest and most popular general', function(err, res){
+	console.log(res.entities);
 	//=> { LOCATION: [ 'Wikipedia' ], ORGANIZATION: [ 'Wikimedia Foundation'] }
-	ner.close();
-	//=>closes the socket connection
 });
 ```
 
 
 ## API
 
-### ner.init(options)
+### ner.get(options, text, callback)
 
 #### options
 
@@ -52,25 +48,29 @@ Type: `string`<br>
 
 HOST of the NER server eg. localhost .
 
-### ner.get(text, callback)
-
-#### options
-
-##### text
+#### text
 
 Type: `string`<br>
 
 Text to be tagged
 
-##### callback
+#### callback(err, response)
 
 Type: `function`<br>
 
 Callback function which recieves the response object.
 
-### ner.close()
+##### response.entities
 
-Destroyes the client.
+Parsed entities from the xml server response.
+
+##### response.raw
+
+Raw xml response from server
+
+##### response._parsed
+
+Internal parser representation (regex matches)
 
 ## License
 
