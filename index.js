@@ -9,6 +9,7 @@ function get(opts, text, callback) {
 	var socket = new net.Socket();
 
 	socket.connect(opts.port, opts.host, function () {
+		socket.setNoDelay(true);
 		socket.write(text + '\n');
 	});
 
