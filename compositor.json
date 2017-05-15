@@ -1,0 +1,88 @@
+{
+  "name": "niksrc/ner",
+  "version": "0.1.4",
+  "libraries": {
+    "xv": "^1.1.25"
+  },
+  "title": "",
+  "branch": "",
+  "style": {
+    "name": "Swiss",
+    "componentSet": {
+      "nav": "nav/BasicNav",
+      "header": "header/SwissHeader",
+      "article": "article/SwissArticle",
+      "footer": "footer/BasicFooter"
+    },
+    "fontFamily": "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+    "heading": {
+      "fontWeight": 700,
+      "letterSpacing": "-0.01em"
+    },
+    "layout": {
+      "fluid": true
+    },
+    "colors": {
+      "text": "#000",
+      "background": "#fff",
+      "primary": "#05a",
+      "secondary": "#444",
+      "highlight": "#f30",
+      "border": "#ccc",
+      "muted": "#eee"
+    }
+  },
+  "content": [
+    {
+      "component": "nav",
+      "links": [
+        {
+          "href": "https://github.com/niksrc/ner",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://npmjs.com/package/ner",
+          "text": "npm"
+        }
+      ]
+    },
+    {
+      "component": "header",
+      "heading": "ner",
+      "subhead": "Client for Stanford Named Entity Reconginiton",
+      "children": [
+        {
+          "component": "ui/TweetButton",
+          "text": "ner: Client for Stanford Named Entity Reconginiton",
+          "url": null
+        },
+        {
+          "component": "ui/GithubButton",
+          "user": "niksrc",
+          "repo": "ner"
+        }
+      ],
+      "text": "v0.2.2"
+    },
+    {
+      "component": "article",
+      "metadata": {
+        "source": "github.readme"
+      },
+      "html": "\n<blockquote>\n<p>Client for Stanford NER</p>\n</blockquote>\n<h2>Requirements</h2>\n<p><a href=\"http://nlp.Stanford.edu/software/CRF-NER.shtml\">Stanford NER</a></p>\n<h2>Starting up Stanford NER</h2>\n<p>Use <a href=\"ner-server.sh\">ner-server.sh</a></p>\n<h2>Install</h2>\n<pre>$ npm <span class=\"hljs-keyword\">install</span> <span class=\"hljs-comment\">--save ner</span></pre><h2>Usage</h2>\n<pre><span class=\"hljs-keyword\">const</span> ner = <span class=\"hljs-built_in\">require</span>(<span class=\"hljs-string\">&apos;ner&apos;</span>);\n\nner.get({\n    <span class=\"hljs-attr\">port</span>:<span class=\"hljs-number\">8080</span>,\n    <span class=\"hljs-attr\">host</span>:<span class=\"hljs-string\">&apos;localhost&apos;</span>\n}, <span class=\"hljs-string\">&apos;Wikipedia is a free-access, free-content Internet encyclopedia, supported and hosted by the non-profit Wikimedia Foundation. Those who can access the site can edit most of its articles.[5] Wikipedia is ranked among the ten most popular websites,[4] and constitutes the Internets largest and most popular general&apos;</span>, <span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span>(<span class=\"hljs-params\">err, res</span>)</span>{\n    <span class=\"hljs-built_in\">console</span>.log(res.entities);\n    <span class=\"hljs-comment\">//=&gt; { LOCATION: [ &apos;Wikipedia&apos; ], ORGANIZATION: [ &apos;Wikimedia Foundation&apos;] }</span>\n});</pre><h2>API</h2>\n<h3>ner.get(options, text, callback)</h3>\n<h4>options</h4>\n<h5>port</h5>\n<p>Type: <code>integer</code><br></p>\n<p>Port on which NER server is running.</p>\n<h5>host</h5>\n<p>Type: <code>string</code><br></p>\n<p>HOST of the NER server eg. localhost .</p>\n<h4>text</h4>\n<p>Type: <code>string</code><br></p>\n<p>Text to be tagged</p>\n<h4>callback(err, response)</h4>\n<p>Type: <code>function</code><br></p>\n<p>Callback function which recieves the response object.</p>\n<h5>response.entities</h5>\n<p>Parsed entities from the xml server response.</p>\n<h5>response.raw</h5>\n<p>Raw xml response from server</p>\n<h5>response._parsed</h5>\n<p>Internal parser representation (regex matches)</p>\n<h2>License</h2>\n<p>MIT &#xA9; <a href=\"https://niksrc.github.io\">Nikhil Srivastava</a></p>\n"
+    },
+    {
+      "component": "footer",
+      "links": [
+        {
+          "href": "https://github.com/niksrc/ner",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://github.com/niksrc",
+          "text": "niksrc"
+        }
+      ]
+    }
+  ]
+}
