@@ -1,7 +1,5 @@
 # ner
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/UozgfSN2pxKtzVMwLa6GdfMR/niksrc/ner'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/UozgfSN2pxKtzVMwLa6GdfMR/niksrc/ner.svg' />
-</a>
+
 > Client for Stanford NER
 
 ## Requirements
