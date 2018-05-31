@@ -1,52 +1,52 @@
 'use strict';
 var net = require('net');
 
-module.exports = {
-	get: get
-};
+class NER {
+	////////////// options //////////////
+	// port NUMBER
+	// host string
+	// entities object of the entities
+	/////////////////////////////////////
+	constructor(opts) {
+		this.socket = new net.Socket()
+		this.opts = opts
+	}
 
-function get(opts, text, callback) {
-	var socket = new net.Socket();
+	get(text, callback) {
+		this.socket.connect(this.opts.port, this.opts.host,  ()  => {
+			this.socket.setNoDelay(true);
+			this.socket.write(text.replace(/\r?\n|\r|\t/g, ' ') + '\n')
+		});
 
-	socket.connect(opts.port, opts.host, function () {
-		socket.setNoDelay(true);
-		socket.write(text.replace(/\r?\n|\r|\t/g, ' ') + '\n');
-	});
+		this.socket.on('data', (data) => {
+			let re = /<([A-Za-z]+?)>(.+?)<\/\1>/g
+			let str = data.toString()
+			let res = {};
+			res.raw = str;
 
-	socket.on('data', function (data) {
-		var re = /<([A-Z]+?)>(.+?)<\/\1>/g;
-		var str = data.toString();
+			let m;
+			let _entities = {}
 
-		var res = {};
-		res.raw = str;
-
-		var m;
-		var entities = {
-			LOCATION: [],
-			ORGANIZATION: [],
-			DATE: [],
-			MONEY: [],
-			PERSON: [],
-			PERCENT: [],
-			TIME: []
-		};
-
-		var _parsed = [];
-		while ((m = re.exec(str)) !== null) {
-			if (m.index === re.lastIndex) {
-				re.lastIndex++;
+			let _parsed = [];
+			while ((m = re.exec(str)) !== null) {
+				if (m.index === re.lastIndex) {
+					re.lastIndex++;
+				}
+				_parsed.push(m);
+				if (!_entities[m[1]]) _entities[m[1]] = []
+				_entities[m[1]].push(m[2]);
 			}
-			_parsed.push(m);
-			entities[m[1]].push(m[2]);
-		}
 
-		res._parsed = _parsed;
-		res.entities = entities;
-		socket.destroy();
-		callback(undefined, res);
-	});
+			res._parsed = _parsed;
+			res.entities = _entities;
+			this.socket.destroy();
+			callback(undefined, res);
+		});
 
-	socket.on('error', function (err) {
-		callback(err, undefined);
-	});
+		this.socket.on('error', (err) => {
+			callback(err, undefined);
+		});
+	}
 }
+
+module.exports = NER
