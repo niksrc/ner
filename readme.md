@@ -18,21 +18,22 @@ $ npm install --save ner
 ## Usage
 
 ```js
-const ner = require('ner');
+const NER = require('ner');
 
-ner.get({
+const ner = new NER({
 	port:8080,
-	host:'localhost'
-}, 'Wikipedia is a free-access, free-content Internet encyclopedia, supported and hosted by the non-profit Wikimedia Foundation. Those who can access the site can edit most of its articles.[5] Wikipedia is ranked among the ten most popular websites,[4] and constitutes the Internets largest and most popular general', function(err, res){
+	host:'172.17.0.2'
+})
+
+ner.get('Wikipedia is a free-access, free-content Internet encyclopedia, supported and hosted by the non-profit Wikimedia Foundation. Those who can access the site can edit most of its articles.[5] Wikipedia is ranked among the ten most popular websites,[4] and constitutes the Internets largest and most popular general', (err, res) => {
 	console.log(res.entities);
-	//=> { LOCATION: [ 'Wikipedia' ], ORGANIZATION: [ 'Wikimedia Foundation'] }
 });
 ```
 
 
 ## API
 
-### ner.get(options, text, callback)
+### new instance
 
 #### options
 
@@ -47,6 +48,10 @@ Port on which NER server is running.
 Type: `string`<br>
 
 HOST of the NER server eg. localhost .
+
+### ner.get(text, callback)
+
+#### parms
 
 #### text
 
