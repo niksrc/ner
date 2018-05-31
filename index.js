@@ -8,11 +8,12 @@ class NER {
 	// entities object of the entities
 	/////////////////////////////////////
 	constructor(opts) {
-		this.socket = new net.Socket()
 		this.opts = opts
 	}
 
 	get(text, callback) {
+		this.socket = new net.Socket()
+		
 		this.socket.connect(this.opts.port, this.opts.host,  ()  => {
 			this.socket.setNoDelay(true);
 			this.socket.write(text.replace(/\r?\n|\r|\t/g, ' ') + '\n')
