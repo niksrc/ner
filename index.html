@@ -8,16 +8,17 @@
 <p>Use <a href="ner-server.sh">ner-server.sh</a></p>
 <h2>Install</h2>
 <pre>$ npm <span class="hljs-keyword">install</span> <span class="hljs-comment">--save ner</span></pre><h2>Usage</h2>
-<pre><span class="hljs-keyword">const</span> ner = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ner'</span>);
+<pre><span class="hljs-keyword">const</span> NER = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ner'</span>);
 
-ner.get({
+<span class="hljs-keyword">const</span> ner = <span class="hljs-keyword">new</span> NER({
     <span class="hljs-attr">port</span>:<span class="hljs-number">8080</span>,
-    <span class="hljs-attr">host</span>:<span class="hljs-string">'localhost'</span>
-}, <span class="hljs-string">'Wikipedia is a free-access, free-content Internet encyclopedia, supported and hosted by the non-profit Wikimedia Foundation. Those who can access the site can edit most of its articles.[5] Wikipedia is ranked among the ten most popular websites,[4] and constitutes the Internets largest and most popular general'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, res</span>)</span>{
+    <span class="hljs-attr">host</span>:<span class="hljs-string">'172.17.0.2'</span>
+})
+
+ner.get(<span class="hljs-string">'Wikipedia is a free-access, free-content Internet encyclopedia, supported and hosted by the non-profit Wikimedia Foundation. Those who can access the site can edit most of its articles.[5] Wikipedia is ranked among the ten most popular websites,[4] and constitutes the Internets largest and most popular general'</span>, (err, res) =&gt; {
     <span class="hljs-built_in">console</span>.log(res.entities);
-    <span class="hljs-comment">//=&gt; { LOCATION: [ 'Wikipedia' ], ORGANIZATION: [ 'Wikimedia Foundation'] }</span>
 });</pre><h2>API</h2>
-<h3>ner.get(options, text, callback)</h3>
+<h3>new instance</h3>
 <h4>options</h4>
 <h5>port</h5>
 <p>Type: <code>integer</code><br /></p>
@@ -25,6 +26,8 @@ ner.get({
 <h5>host</h5>
 <p>Type: <code>string</code><br /></p>
 <p>HOST of the NER server eg. localhost .</p>
+<h3>ner.get(text, callback)</h3>
+<h4>parms</h4>
 <h4>text</h4>
 <p>Type: <code>string</code><br /></p>
 <p>Text to be tagged</p>
