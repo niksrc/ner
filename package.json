@@ -1,6 +1,6 @@
 {
   "name": "ner",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "description": "Client for STANFORD NER",
   "license": "MIT",
   "repository": "niksrc/ner",
