@@ -1,6 +1,6 @@
 {
   "name": "ner",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "description": "Client for STANFORD NER",
   "license": "MIT",
   "repository": "niksrc/ner",
@@ -10,7 +10,7 @@
     "url": "niksrc.github.io"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=8"
   },
   "scripts": {
     "test": "xo"
@@ -28,8 +28,19 @@
     "NER"
   ],
   "devDependencies": {
-    "ava": "^0.12.0",
-    "xo": "^0.12.1",
-    "nyc": "^6.1.1"
+    "ava": "^0.19.1",
+    "xo": "^0.20.2"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "useTabs": true,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true
+  },
+  "xo": {
+    "esnext": true,
+    "prettier": true
   }
 }
