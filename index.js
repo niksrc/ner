@@ -26,7 +26,7 @@ class NER {
 		});
 
 		this.socket.on('data', data => {
-			const re = /<([A-Za-z]+?)>(.+?)<\/\1>/g;
+			const re = /<([A-Za-z-]+?)>(.+?)<\/\1>/g;
 			const str = data.toString();
 			const res = {};
 			res.raw = str;
